@@ -14,7 +14,7 @@ function HeaderLoggedOut( props ) {
       } )
       if ( response.data ) {
         localStorage.setItem( 'complexappToken', response.data.token );
-        localStorage.setItem( 'complexappUserName', response.data.username );
+        localStorage.setItem( 'complexappUsername', response.data.username );
         localStorage.setItem( 'complexappAvatar', response.data.avatar );
         props.setLoggedIn( true );
       } else {
