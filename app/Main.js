@@ -6,7 +6,7 @@ import Header from './components/Header';
 import HomeGuest from './components/HomeGuest';
 import Footer from './components/Footer';
 
-function ExampleComponent() {
+function Main() {
   return (
     <>
       <Header />
@@ -16,7 +16,7 @@ function ExampleComponent() {
   )
 }
 
-ReactDOM.render( <ExampleComponent />, document.getElementById( 'app' ) );
+ReactDOM.render( <Main />, document.getElementById( 'app' ) );
 
 if ( module.hot ) {
   module.hot.accept();
