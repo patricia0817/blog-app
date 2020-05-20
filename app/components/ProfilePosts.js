@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Axios from 'axios'
 import { useParams, Link } from 'react-router-dom'
 
+import LoadingDotsIcon from './LoadingDotsIcon'
+
 function ProfilePosts() {
   const [ isLoading, setIsLoading ] = useState( true );
   const [ posts, setPosts ] = useState( [] );
@@ -20,7 +22,7 @@ function ProfilePosts() {
     fetchPosts();
   }, [] )
 
-  if ( isLoading ) return <div>Loading...</div>
+  if ( isLoading ) return <LoadingDotsIcon />
   return (
     <div className="list-group">
       { posts.map( ( post ) => {
