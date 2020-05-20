@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown'
 import ReactTooltip from 'react-tooltip'
 
 import LoadingDotsIcon from './LoadingDotsIcon'
+import NotFound from './NotFound'
 
 function ViewSinglePost() {
   const { id } = useParams()
@@ -29,6 +30,10 @@ function ViewSinglePost() {
       ourRequest.cancel();
     }
   }, [] )
+
+  if ( !isLoading && !post ) {
+    return <NotFound />
+  }
 
   if ( isLoading ) return (
     <Page title="...">
