@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useImmerReducer } from 'use-immer'
 import Page from './Page'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, withRouter } from 'react-router-dom'
 import Axios from 'axios'
 
 import DispatchContext from '../DispatchContext'
@@ -9,7 +9,7 @@ import StateContext from '../StateContext'
 import LoadingDotsIcon from './LoadingDotsIcon'
 import NotFound from './NotFound'
 
-function EditPost() {
+function EditPost( props ) {
   const appState = useContext( StateContext );
   const appDispatch = useContext( DispatchContext );
 
@@ -92,6 +92,12 @@ function EditPost() {
         const response = await Axios.get( `/post/${ state.id }`, { cancelToken: ourRequest.token } )
         if ( response.data ) {
           dispatch( { type: 'fetchComplete', value: response.data } )
+          if ( appState.user.username !== response.data.author.username ) {
+            appDispatch( { type: 'flashMessage', value: 'You do not have permission to edit that post' } )
+
+            //redirect to homepage
+            props.history.push( '/' )
+          }
         } else {
           dispatch( { type: 'notFound' } )
         }
@@ -171,4 +177,4 @@ function EditPost() {
   )
 }
 
-export default EditPost
+export default withRouter( EditPost )
