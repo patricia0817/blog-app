@@ -12,7 +12,6 @@ function Search() {
   }, [] )
 
   function searchKeyPressHandler( e ) {
-    console.log( e.keyCode )
     if ( e.keyCode === 27 ) {
       appDispatch( { type: 'closeSearch' } )
     }
