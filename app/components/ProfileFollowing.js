@@ -30,8 +30,6 @@ function ProfileFollowing() {
   if ( isLoading ) return <LoadingDotsIcon />
 
 
-  console.log( appState.user.userName );
-  console.log( username )
   return (
     < div className="list-group" >
       {
