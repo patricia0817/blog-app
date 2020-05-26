@@ -22,10 +22,10 @@ function HeaderLoggedOut( props ) {
         } )
         if ( response.data ) {
           appDispatch( { type: 'login', data: response.data } );
-          appDispatch( { type: 'flashMessage', value: 'You have successfully logged in.' } )
+          appDispatch( { type: 'flashMessage', messageType: 'alert-success', value: 'You have successfully logged in.' } )
         } else {
           console.log( 'Incorrect user/password' )
-          appDispatch( { type: 'flashMessage', value: 'Invalid username/password.' } )
+          appDispatch( { type: 'flashMessage', messageType: 'alert-danger', value: 'Invalid username/password.' } )
         }
       } else {
         usernameInput.current.classList.add( 'is-invalid' )
